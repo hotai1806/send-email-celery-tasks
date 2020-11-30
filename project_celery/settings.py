@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+SITE_ID = 3
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# CONFIG Email host
+
+EMAIL_HOST = 'smtp.gmail.com'
+# this is exactly the value 'apikey'
+
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 # Application definition
 
@@ -41,6 +51,7 @@ INSTALLED_APPS = [
     'tasks',
     'django_celery_results',
     'helloworld',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
