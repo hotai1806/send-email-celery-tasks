@@ -14,7 +14,6 @@ class SimpleMiddleWare(MiddlewareMixin):
     def __call__(self, request):
 
         host = request.get_host()
-        print(hosts.get(host))
         request.urlconf = hosts.get(host)
         response = self.get_response(request)
         return response
