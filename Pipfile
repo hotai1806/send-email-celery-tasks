@@ -9,6 +9,8 @@ celery = "*"
 redis = "*"
 djangorestframework = "*"
 django-celery-results = "*"
+pusher-push-notifications = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

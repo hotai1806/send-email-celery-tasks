@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # CONFIG Email host
+CORS_ORIGIN_ALLOW_ALL = True
 
 EMAIL_HOST = 'smtp.gmail.com'
 # this is exactly the value 'apikey'
@@ -52,10 +53,12 @@ INSTALLED_APPS = [
     'django_celery_results',
     'helloworld',
     'django.contrib.sites',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     # Custom middleware
+    'corsheaders.middleware.CorsMiddleware',
     'project_celery.middleware.SimpleMiddleWare',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
