@@ -3,6 +3,7 @@ import celery
 import time
 from django.core.mail import send_mail, BadHeaderError
 from .utils import beams_client
+from project_celery.settings import EMAIL_HOST_USER
 
 
 class CallbackSendEmail(celery.Task):
@@ -58,9 +59,9 @@ def send_email(self, subject, data, receiver):
         self.update_state(state="PROGRESS", meta={'progress': 50})
         # holding time 1s
         time.sleep(1)
-        a = send_mail(subject, data, '1751010127tai@ou.edu.vn', [receiver],)
+        a = send_mail(subject, data, EMAIL_HOST_USER, [receiver],)
         self.update_state(state="PROGRESS", meta={'progress': 90})
-        if a < 0:
+        if a < 1:
             return "User can not receive email"
         return 'Email send success'
     except BadHeaderError:
